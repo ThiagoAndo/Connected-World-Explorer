@@ -1,13 +1,20 @@
-<center><h1> Multi REST API's web application </h1> </center> </br><p align="center"> <img width="300" src="assets/screenshots/Fetch.png"></p>
+<center><h1> Connected World Explorer</h1> </center> </br><p align="center"> <img width="300" src="assets/screenshots/Fetch.png"></p>
   
 <div style="text-align: justify">
-This web application was originally built using vanilla JavaScript <a href="https://github.com/ThiagoAndo/rest-countries-api-with-color-theme-switcher-master.git">REST Countries API</a>. However, as with everything in life, growth and evolution are inevitable. To reflect my personal development, I decided to enhance the application by rebuilding it in React and integrating additional APIs to provide a more comprehensive user experience.
+This web application was originally built using vanilla JavaScript
+ <a href="https://github.com/ThiagoAndo/rest-countries-api-with-color-theme-switcher-master.git">REST
+ Countries API</a>. However, as with everything in life, growth and evolution are inevitable.
+  To reflect my personal development, I decided tansform it into a React-based web application built 
+  to integrate data from multiple APIs, including REST Countries, TimeZoneDB, Geoapify, OpenWeather, 
+  and GeoHive(Irish census data provider), providing users with comprehensive information about countries 
+  and user location.  Key features include dynamic country information, weather updates, timezone 
+  data, and regional demographics. Overcame various challenges in API integration and data
+  synchronization to create a cohesive, interactive experience.
 <br />
 <br />
-The updated version offers more detailed information about countries from the REST Countries API and also includes data about the user's location. I encountered many challenges along the way, but I also had a lot of fun developing this project.
-<br />
-<br />
-I hope you enjoy using the app as much as I enjoyed building it, and that you're able to learn something from it too. If you have any questions or just want to say hello, feel free to reach out to me on X (formerly Twitter) at @Thiago09455827.
+I hope you enjoy using the app as much as I enjoyed building it, and that you're 
+able to learn something from it too. If you have any questions or just want to say hello,
+feel free to reach out to me on X (formerly Twitter) at @Thiago09455827.
 </div>
 
 ## Table of contents
@@ -72,6 +79,7 @@ I hope you enjoy using the app as much as I enjoyed building it, and that you're
 <br />
 <br />
 <br />
+
 ## Screenshot
 
 <br />
@@ -185,7 +193,7 @@ git checkout 272f4ad
 
 - Github - [Thiago Ando de Freitas](https://github.com/ThiagoAndo)
 - Personal website - [Portfolio](https://thiago-freitas-portfolio.vercel.app/)
-- Alive Website - [rest-countries-api](https://rest-mult-api.netlify.app)
+- Alive Website - [Connected World Explore](https://rest-mult-api.netlify.app)
 
 <hr />
 

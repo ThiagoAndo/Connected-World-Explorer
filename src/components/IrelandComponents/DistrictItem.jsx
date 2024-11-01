@@ -41,7 +41,7 @@ export default function DistrictItem({ county }) {
           id="bologna-list"
           role="tablist"
         >
-          {["Description", "Population", "Weather"].map((tab) => (
+          {["Description", "Population", "Map", "Weather"].map((tab) => (
             <CardNav
               key={tab}
               id={tab}
@@ -57,7 +57,7 @@ export default function DistrictItem({ county }) {
           context.mode ? "card-body  active" : "card-body  active-dark"
         }
       >
-        <Panel data={county} id={tabActive.slice(0, 3)} />
+        <Panel data={county} rings={rings} id={tabActive.slice(0, 3)} />
       </div>
     </motion.div>
   );

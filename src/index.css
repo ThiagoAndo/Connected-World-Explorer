@@ -6,14 +6,17 @@
   box-sizing: border-box;
   text-decoration: none;
 }
+
 body {
   font-size: 16px;
   font-family: "Ubuntu", sans-serif;
   box-sizing: content-box;
 }
+
 .content {
   text-align: center;
 }
+
 #loading {
   height: 100vh;
   display: flex;
@@ -21,6 +24,7 @@ body {
   align-content: center;
   justify-content: center;
 }
+
 /* Navagation========================== */
 nav {
   width: 100%;
@@ -29,25 +33,51 @@ nav {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  min-height: 6rem;
 }
+.ie_img {
+  width: 100px;
+}
+.ie_link_w {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: white;
+  font-size: 2rem;
+}
+
+.ie_link_b {
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: black;
+  font-size: 2rem;
+}
+
 #mainTxt {
   margin-left: 5rem;
   cursor: pointer;
 }
+
 .mainTxt_h {
   color: #000000;
   margin: 0;
 }
+
 .mainTxt_h2 {
   color: #ffffff;
   margin: 0;
 }
+
 .mainTxt_h:hover {
   text-shadow: 0.5px 0 1px #000000;
 }
+
 .mainTxt_h2:hover {
   text-shadow: 0.5px 0 1px #ffffff;
 }
+
 #btn {
   display: flex;
   flex-direction: row;
@@ -60,16 +90,19 @@ nav {
   box-sizing: content-box;
   border-radius: 1.5rem;
 }
+
 #btn div:first-of-type {
   background-image: url("../assets/moon.svg");
   background-repeat: no-repeat;
   width: 1rem;
   height: 1rem;
 }
+
 .filt {
   filter: invert(100%) sepia(0%) saturate(7428%) hue-rotate(295deg)
     brightness(111%) contrast(84%);
 }
+
 /* Search Section========================== */
 #srch {
   display: flex;
@@ -79,13 +112,16 @@ nav {
   width: 90%;
   margin: 3rem auto;
 }
+
 .marg {
   margin-top: 4rem;
 }
+
 .form {
   position: relative;
   width: 325px;
 }
+
 .form input {
   padding: 1rem;
   padding-left: 2rem;
@@ -96,19 +132,23 @@ nav {
   border-radius: 0.25rem;
   font-size: 1rem;
 }
+
 ::placeholder {
   color: #ffffff;
 }
+
 #formSelec select {
   padding: 0.5rem;
   height: 3rem;
   width: 10rem;
   border-radius: 0.25rem;
 }
+
 /* Main & Cards========================== */
 #main > a:hover {
   color: inherit;
 }
+
 #main,
 #main_district {
   padding: 1rem;
@@ -121,9 +161,15 @@ nav {
   margin: 2rem auto 0;
   padding-bottom: 5.625rem;
 }
+
+#main_district {
+  grid-template-columns: repeat(auto-fill, minmax(23rem, 1fr));
+}
+
 article {
   border-radius: 0.3rem;
 }
+
 article > div:first-of-type {
   width: 100%;
   height: 9.375rem;
@@ -131,6 +177,7 @@ article > div:first-of-type {
   background-position: center;
   border-radius: 0.3rem;
 }
+
 article div:last-of-type div {
   display: flex;
   flex-direction: column;
@@ -138,16 +185,20 @@ article div:last-of-type div {
   margin-top: 0.6875rem;
   margin: 1.5rem 0 1.5rem 1rem;
 }
+
 article div:last-of-type div h3 {
   margin-bottom: 0.75rem;
 }
+
 article div:last-of-type div p {
   margin-bottom: 0.5rem;
 }
+
 a:hover {
   text-decoration: none;
   color: inherit;
 }
+
 /* Expand Section========================== */
 .weather_cont {
   width: 19rem;
@@ -157,28 +208,48 @@ a:hover {
   padding: 0.5rem;
   grid-area: 1/4/3/3;
 }
+
+.county_map {
+  height: 250px;
+  width: 100%;
+}
+
+.county_map #map {
+  width: 100%;
+  height: 100%;
+}
+
+.county_map #map > div {
+  width: 100%;
+  height: 100%;
+}
+
 .weather_cont_county {
   margin: 0;
   height: fit-content;
   box-shadow: 1px 2px 30px #00000033;
   border-radius: 1rem;
 }
+
 #expand {
   width: 100%;
   position: relative;
   height: fit-content;
 }
+
 #expand > div {
   width: 90%;
   margin: auto;
   padding-top: 3.5rem;
 }
+
 #expand .btn_control {
   display: flex;
   flex-wrap: wrap;
   gap: 3rem;
   width: 90%;
 }
+
 .btnExp {
   width: 8rem;
   height: 2.5rem;
@@ -190,6 +261,7 @@ a:hover {
   border-radius: 0.3rem;
   box-shadow: 0px 0px 6px 0px black;
 }
+
 .btn_ie {
   width: 9rem;
   height: 2.5rem;
@@ -202,9 +274,11 @@ a:hover {
   font-weight: 500;
   box-shadow: 0px 0px 6px 0px black;
 }
+
 .btn_ie:hover {
   font-weight: bold;
 }
+
 .btn_weather {
   width: 8rem;
   height: 2.5rem;
@@ -217,17 +291,21 @@ a:hover {
   box-shadow: 0px 0px 6px 0px black;
   margin: 4rem auto;
 }
+
 .btn_weather:hover {
   font-weight: bold;
   transition: font-weight 0.2s ease;
 }
+
 .btnExp > span:first-of-type {
   font-size: 1.9rem;
   padding-bottom: 1px;
 }
+
 .btnExp > span:last-of-type {
   font-size: 1.2rem;
 }
+
 #expand #contExp {
   display: grid;
   grid-template-columns: 1fr 3fr;
@@ -237,6 +315,7 @@ a:hover {
   margin-top: 3rem;
   gap: 10px;
 }
+
 #expand #flag {
   width: 50%;
   height: 15vh;
@@ -246,15 +325,18 @@ a:hover {
   box-shadow: #000000 0px 0px 4px 0px;
   margin: auto;
 }
+
 #expand #map {
   margin-top: 1rem;
   height: 44vh;
   box-shadow: #000000 0px 0px 4px 0px;
 }
+
 #expand #map > div {
   width: 100%;
   height: 100%;
 }
+
 #expand #holdInf {
   display: grid;
   grid-template-columns: 1fr 1fr 2fr;
@@ -263,9 +345,11 @@ a:hover {
   height: 50vh;
   margin-left: 0.5rem;
 }
+
 #expand h1 {
   font-size: 1.6rem;
 }
+
 #holdInf .inf {
   margin: 0;
   height: 23vh;
@@ -274,6 +358,7 @@ a:hover {
   flex-direction: column;
   justify-content: space-between;
 }
+
 #holdInf #border {
   margin-top: 2rem;
   grid-area: 2/1/3/3;
@@ -281,6 +366,7 @@ a:hover {
   flex-direction: column;
   justify-content: space-between;
 }
+
 #btnBor {
   width: 100%;
   display: grid;
@@ -288,6 +374,7 @@ a:hover {
   grid-template-rows: 2rem 2rem 2rem 2rem;
   grid-gap: 1rem;
 }
+
 #holdInf #border #noBtn {
   width: 9rem;
   height: 2rem;
@@ -296,6 +383,7 @@ a:hover {
   align-items: center;
   flex-wrap: wrap;
 }
+
 #holdInf #border .selectBorder {
   height: 100%;
   cursor: pointer;
@@ -307,40 +395,50 @@ a:hover {
   font-size: 0.8rem;
   box-shadow: 0px 0px 4px 0px black;
 }
+
 #holdInf #border .selectBorder:hover {
   font-weight: 900;
 }
+
 #expand .btnExp:hover {
   font-weight: 900;
 }
+
 /* JS DOM manipulation========================== */
 .bDark {
   background-color: #202c37;
   color: #ffffff;
 }
+
 .dark {
   background-color: #2b3945;
   color: #ffffff;
 }
+
 .blight {
   background-color: #fafafa;
   color: #111517;
 }
+
 .light {
   background-color: #ffffff;
   color: hsl(200, 15%, 8%);
   border-bottom: #000000 solid 1px;
 }
+
 .light::placeholder {
   color: #858585;
 }
+
 #srch .marTop {
   margin-top: 0px;
 }
+
 .stop-scrolling {
   height: 100%;
   overflow: hidden;
 }
+
 .wait_data {
   width: 50%;
   height: 30vh;
@@ -350,10 +448,12 @@ a:hover {
   font-size: 2rem;
   margin: 5rem auto;
 }
+
 /* Auto Complete================================ */
 .autocomplete {
   width: 30rem;
 }
+
 .autocomplete-items {
   position: absolute;
   border: 1px solid #d4d4d4;
@@ -364,31 +464,38 @@ a:hover {
   left: 5rem;
   right: 0;
 }
+
 .autocomplete-items div {
   padding: 10px;
   cursor: pointer;
 }
+
 /*when hovering an item:*/
 .autocomplete-items div:hover {
   font-weight: 900;
 }
+
 /*when navigating through the items using the arrow keys:*/
 .autocomplete-active {
   background-color: #3e85a4 !important;
   color: #ffffff;
 }
+
 /* Clock ======================================= */
 .App {
   font-family: sans-serif;
 }
+
 .clock h3 {
   position: relative;
   top: 110%;
 }
+
 .clock h5 {
   position: relative;
   top: 115%;
 }
+
 .clock {
   position: absolute;
   right: 20px;
@@ -403,6 +510,7 @@ a:hover {
   transition: all 200ms ease;
   -webkit-transition: all 200ms ease;
 }
+
 .clock::after {
   background: #aaa;
   content: "";
@@ -418,6 +526,7 @@ a:hover {
   transition: all 200ms ease;
   -webkit-transition: all 200ms ease;
 }
+
 .hour_hand {
   position: absolute;
   width: 7px;
@@ -429,6 +538,7 @@ a:hover {
   -webkit-transition: all 200ms ease;
   transform-origin: bottom;
 }
+
 #min_hand {
   position: absolute;
   width: 4px;
@@ -440,6 +550,7 @@ a:hover {
   transition: all 200ms ease;
   -webkit-transition: all 200ms ease;
 }
+
 .sec_hand {
   position: absolute;
   width: 2px;
@@ -451,6 +562,7 @@ a:hover {
   transition: all 200ms ease;
   -webkit-transition: all 200ms ease;
 }
+
 .clock span {
   position: absolute;
   font-family: "Source Sans Pro", sans-serif;
@@ -458,54 +570,67 @@ a:hover {
   transition: all 200ms ease;
   -webkit-transition: all 200ms ease;
 }
+
 .twelve {
   top: 7px;
   left: 46%;
 }
+
 .one {
   top: 10%;
   right: 26%;
 }
+
 .eleven {
   top: 10%;
   left: 26%;
 }
+
 .two {
   top: 25%;
   right: 10%;
 }
+
 .three {
   right: 7px;
   top: 46%;
 }
+
 .four {
   right: 18px;
   top: 66%;
 }
+
 .five {
   right: 39px;
   top: 80%;
 }
+
 .six {
   bottom: 3px;
   left: 48%;
 }
+
 .seven {
   left: 39px;
   top: 80%;
 }
+
 .eight {
   left: 16px;
   top: 67%;
 }
+
 .nine {
   left: 6px;
   top: 46%;
 }
+
 .ten {
   top: 25%;
   left: 10%;
 }
+
 /*======================
     404 page
 =======================*/
@@ -515,20 +640,25 @@ a:hover {
   font-family: "Arvo", serif;
   margin: auto;
 }
+
 .page_404 img {
   width: 100%;
 }
+
 .four_zero_four_bg {
   background-image: url(https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif);
   height: 400px;
   background-position: center;
 }
+
 .four_zero_four_bg h1 {
   font-size: 80px;
 }
+
 .four_zero_four_bg h3 {
   font-size: 80px;
 }
+
 .link_404 {
   color: #fff !important;
   padding: 10px 20px;
@@ -536,9 +666,11 @@ a:hover {
   margin: 20px 0;
   display: inline-block;
 }
+
 .contant_box_404 {
   margin-top: -50px;
 }
+
 /* Ireland Cards ========================== */
 .active-dark {
   background-color: #171f27;
@@ -546,14 +678,32 @@ a:hover {
   color: white;
   border: solid 1px #171f27 !important;
 }
+
 .card {
   min-height: fit-content;
   max-height: 290px;
 }
+
+.infoBox {
+  padding-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.infoBox p {
+  display: flex;
+  gap: 1rem;
+}
+
+.card-title {
+  text-align: center;
+}
+
 .nav {
   flex-wrap: nowrap;
 }
-/* Scrool Btn ========================== */
+
 .up_btn {
   position: fixed;
   font-size: 1.5rem;
@@ -568,22 +718,30 @@ a:hover {
   text-decoration: none;
   z-index: 1000;
 }
+
 #weather_detail {
   min-height: 90vh;
   max-height: fit-content;
   padding-bottom: 2rem;
 }
+
 .not_found {
   display: flex;
   justify-content: center;
   margin-top: 1rem;
   gap: 0.5rem;
 }
+
 @media (min-width: 330px) and (max-width: 490px) {
+  * {
+    font-size: 1rem;
+  }
+
   body {
     font-size: 12px;
     width: 401px;
   }
+
   #srch {
     display: grid;
     gap: 3rem;
@@ -592,21 +750,47 @@ a:hover {
     margin-top: 20px;
     width: 100%;
   }
+
   nav {
+    padding: 1rem;
     width: 100%;
+    flex-wrap: wrap;
+    height: fit-content;
   }
+
+  .ie_img {
+    width: 50px;
+  }
+  .mainTxt_h2 {
+    font-size: 1rem;
+  }
+
+  .ie_link_w {
+    color: white;
+    font-size: 0.9rem;
+    padding-left: 1em;
+  }
+
+  .ie_link_b {
+    color: black;
+    font-size: 0.9rem;
+  }
+
   .form {
     width: 100%;
   }
+
   .src-container {
     width: 80%;
     margin: auto;
   }
+
   .form > input {
     width: 364px;
     padding: 5px;
     margin-left: 20px;
   }
+
   #formSelec {
     margin: auto;
     width: 80%;
@@ -632,6 +816,7 @@ a:hover {
   #mainTxt {
     margin-left: 10px;
   }
+
   #btnBor {
     width: 100%;
     display: flex;
@@ -639,13 +824,10 @@ a:hover {
     flex-wrap: wrap;
     gap: 10px;
   }
-  #btn {
-    margin-right: 10px;
-    justify-content: space-around;
-  }
 
-  #btn div:first-of-type {
-    margin-left: 30px;
+  #btn {
+    width: fit-content;
+    gap: 5px;
   }
 
   /* Expand screen======================================= */
@@ -654,9 +836,11 @@ a:hover {
     height: 210vh;
     top: -16px;
   }
+
   #expand > div {
     margin: auto;
   }
+
   .btnExp {
     width: 117px;
     height: 35px;
@@ -678,59 +862,97 @@ a:hover {
     width: 300px;
     gap: 2rem;
   }
+
   .weather_cont {
     width: 100%;
     margin: 4em 0 0 0;
   }
+
   .clock {
     display: none;
   }
+
   #root {
     height: 170vh;
   }
+
   #holdInf #border {
     margin-left: 0px;
     grid-area: 3/1/4/2;
     grid-template-columns: 1fr;
   }
+
   #holdInf #border #noBtn {
     height: 50px;
   }
+
   #holdInf div:first-child h1 {
     margin-bottom: 18px;
   }
+
   #holdInf .inf {
     margin-left: 0px;
     gap: 1rem;
   }
+
   #holdInf #border .selectBorder {
     width: 90px;
     margin-left: 0;
     margin-bottom: 0;
     height: 2rem;
   }
-  * {
-    font-size: 1rem;
-  }
+
   .weather_cont {
     width: 100%;
     margin: 4em 0 0 0;
   }
-  .nav {
-    flex-wrap: nowrap;
-  }
-  .nav-tabs .nav-link {
-    padding: 12px;
-  }
+
   #weather_detail {
     height: 165vh;
   }
-}
-@media (min-width: 490px) and (max-width: 768px) {
-  nav {
-    width: 100%;
+
+  .nav-tabs .nav-link {
+    font-size: 0.9rem;
+    padding: 12px;
   }
 
+  #main_district {
+    margin: 0;
+  }
+
+  .infoBox {
+    padding-top: 1rem;
+    flex-direction: column;
+    gap: 0px;
+  }
+
+  .infoBox p {
+    font-size: 1rem;
+  }
+
+  .card-title {
+    text-align: left;
+    font-size: 1.3rem;
+  }
+}
+
+@media (min-width: 490px) and (max-width: 768px) {
+  nav {
+    padding: 1rem;
+    width: 100%;
+    flex-wrap: wrap;
+    height: fit-content;
+  }
+  nav #btn {
+    margin-left: 3rem;
+    gap: 2rem;
+  }
+
+  nav #btn > .icon,
+  p {
+    margin-right: 1rem;
+    scale: 1.8;
+  }
   main {
     width: 100%;
   }
@@ -740,7 +962,8 @@ a:hover {
   }
 
   #btn {
-    margin-right: 3rem;
+    width: fit-content;
+    gap: 5px;
   }
 
   .form {
@@ -756,9 +979,11 @@ a:hover {
   #formSelec select {
     margin-right: 3rem;
   }
+
   #expand {
     height: 150vh;
   }
+
   #expand #contExp {
     display: grid;
     grid-template-columns: 1fr;
@@ -785,112 +1010,167 @@ a:hover {
   .btnExp {
     width: 7rem;
   }
+
   .btn_weather {
     margin: 3.5rem auto;
   }
+
   #weather_detail {
     height: 160vh;
   }
+
   .card {
     width: 70%;
     margin: auto;
   }
+
+  .nav-tabs .nav-link {
+    font-size: 0.9rem;
+    padding: 12px;
+  }
+
+  #main_district {
+    margin: 0;
+  }
+
+  .infoBox {
+    padding-top: 1rem;
+    flex-direction: column;
+    gap: 0px;
+  }
+
+  .infoBox p {
+    font-size: 1rem;
+  }
+
+  .card-title {
+    text-align: left;
+    font-size: 1.3rem;
+  }
 }
+
 @media (min-width: 769px) and (max-width: 1400px) {
   body {
     font-size: 1rem;
   }
+
   nav {
     width: 100%;
+    max-height: fit-content;
   }
+
   main {
     width: 100%;
   }
+
   .form {
     width: 325px;
   }
+
   .form > input {
     width: 16rem;
     width: 420px;
   }
+
   #main {
     width: 90%;
     padding-bottom: 5.625rem;
     overflow: hidden;
     margin: auto;
   }
+
   #expand {
     height: 120vh;
   }
+
   #expand #holdInf {
     margin-left: 2rem;
     width: 100%;
   }
+
   #holdInf .inf {
     font-size: 1rem;
   }
+
   #holdInf #border {
     font-size: 0.7rem;
     margin-top: 9rem;
   }
+
   #holdInf #border .selectBorder {
     font-size: 0.7rem;
   }
+
   .btnExp {
     width: 7rem;
   }
+
   .clock {
     right: 20px;
     top: 20px;
   }
+
   #expand > div {
     width: 90%;
     margin: 0px 0px 0px 40px;
     padding-top: 3.5rem;
   }
+
   .icon {
     scale: 1.5;
     margin-bottom: 0.2em;
   }
+
   .not_found {
     font-size: 1.5rem;
   }
 }
+
 @media (min-width: 1400px) {
   body {
     font-size: 1rem;
   }
+
   #btnBor {
     grid-template-columns: repeat(auto-fill, minmax(6rem, 1fr));
   }
+
   #expand {
     height: 100vh;
   }
+
   #expand #holdInf {
     margin-left: 2rem;
   }
+
   .weather_cont {
     margin-left: 2rem;
   }
+
   #holdInf .inf {
     font-size: 1rem;
   }
+
   #expand > div {
     width: 90%;
     margin: 0px 0px 0px 40px;
     padding-top: 3.5rem;
   }
+
   #holdInf #border {
     font-size: 0.7rem;
     margin-top: 5rem;
   }
+
   .icon {
     scale: 1.5;
     margin-bottom: 0.2rem;
   }
+
   #weather_detail {
     height: 130vh;
   }
+
   .not_found {
     font-size: 1.5rem;
   }

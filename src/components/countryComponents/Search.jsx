@@ -12,11 +12,17 @@ function Search({ opt, call, holderF, holderS }) {
   const dispatch = useDispatch();
   const context = useContext(ModeAction);
   const regionctx = useContext(fRegion);
-  const districts = useSelector((state) => state.location.disName);
+  let districts = useSelector((state) => state.location.disName);
   const { path } = useThisLocation();
   const { countries } = useRouteLoaderData("main");
   const [coutry, sentCountry] = useState();
   const navigate = useNavigate();
+
+  if (districts.length > 0) {
+    districts = districts.map((d) => {
+      return { ["id"]: d.id, ["name"]: d.name.toLowerCase() };
+    });
+  }
   if (call === "c") {
     options = opt;
   } else {
@@ -46,7 +52,12 @@ function Search({ opt, call, holderF, holderS }) {
   }
   function handleOnSelect(item) {
     if (path === "/Ireland") {
-      dispatch(locAction.setFilterDistricts({ name: item.name , call:"county"}));
+      dispatch(
+        locAction.setFilterDistricts({
+          name: item.name.toUpperCase(),
+          call: "county",
+        })
+      );
     } else {
       navigate(`/${item.id}`);
     }

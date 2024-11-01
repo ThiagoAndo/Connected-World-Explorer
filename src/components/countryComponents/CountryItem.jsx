@@ -26,7 +26,7 @@ function CountryItem({ country }) {
       >
         <div style={{ backgroundImage: `url(${country.flags.png})` }}> </div>
         <div>
-          <div className="infoBox">
+          <div>
             <h3>{country.name.common}</h3>
             <p>
               <strong>Population: </strong>
