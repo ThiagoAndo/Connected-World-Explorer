@@ -24,6 +24,7 @@ feel free to reach out to me on X (formerly Twitter) at @Thiago09455827.
   - [Built using](#built-using)
   - [APIs](#apis)
   - [Flowchart](#flowchart)
+  - [Mindmap](#mindmap)
   - [Screenshot](#screenshot)
 - [Local development](#local-development)
   - [Instructions](#instructions)
@@ -68,13 +69,22 @@ feel free to reach out to me on X (formerly Twitter) at @Thiago09455827.
 - GeoHive-(Population by Sex and Marital Status, Electoral Division, Census 2016, Theme 1.2, Ireland, 2016, CSO & Tailte Éireann)
 
 ### Flowchart
-
 <br />
 <br />
 <br />
-
 <p align="center" style="solid 1px red">
     <img  src="assets/screenshots/Multi-API.png" alt="Mobile Version Picture">
+</p>
+<br />
+<br />
+<br />
+
+### Mindmap
+<br />
+<br />
+<br />
+<p align="center" style="solid 1px red">
+    <img  src="assets/screenshots/mindmap.png" alt="Mobile Version Picture">
 </p>
 <br />
 <br />
@@ -193,7 +203,7 @@ git checkout 272f4ad
 
 - Github - [Thiago Ando de Freitas](https://github.com/ThiagoAndo)
 - Personal website - [Portfolio](https://thiago-freitas-portfolio.vercel.app/)
-- Alive Website - [Connected World Explore](https://rest-mult-api.netlify.app)
+- Live Website - [Connected World Explore](https://rest-mult-api.netlify.app)
 
 <hr />
 
