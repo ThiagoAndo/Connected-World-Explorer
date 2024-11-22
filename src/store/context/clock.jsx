@@ -1,108 +1,98 @@
 import { createContext, useState, useEffect, useRef, useCallback } from "react";
 import { fetchZone, loadTimeZone } from "../../helpers/HTTP";
+import { throttle } from "lodash";
+
 const key = import.meta.env.VITE_TIME_ZONE_KEY;
 
 export const ClockContext = createContext({
   timer: null,
   city: null,
   setCode: () => {},
-  run: () => {},
   stop: () => {},
 });
-let city = null;
-export default function ClockProvider({ children }) {
-  const [timer, setTimer] = useState(null);
-  const [country, setCountry] = useState(null);
-  const [change, setChange] = useState(false);
-  let timeInter = useRef();
-  const loadZoneName = useCallback(async function loadZoneName(coutry) {
-    let time = null;
-    let zone = null;
-    let resData;
-    resData = await fetchZone(coutry);
-    if (resData != undefined) {
-      const cities = resData.zones.map((zn) => {
-        const cts = zn.zoneName.split("/");
-        return cts[cts.length - 1];
-      });
-      if (cities.includes(coutry?.capital)) {
-        const zn = cities.indexOf(coutry?.capital);
-        zone = resData?.zones[zn]?.zoneName;
-        city = coutry.capital;
-      } else {
-        zone = resData?.zones[0]?.zoneName;
-        city = resData?.zones[0]?.zoneName.split("/")[1];
-      }
-      if (city?.includes("_") || city?.includes("-")) {
-        city = city.replaceAll("_", " ");
-        city = city.replaceAll("-", " ");
-      }
-      if (zone === undefined) {
-        time = "NOT AVAILABLE";
-      } else {
-        time = loadTime(zone);
-        return time;
-      }
-    }
-  }, []);
 
-  async function loadTime(zone) {
-    let resData;
-    let time = null;
-    resData = await loadTimeZone(zone);
-    if (resData != undefined) {
-      time = new Date(resData.formatted);
+let city = null;
+
+export default function ClockProvider({ children }) {
+  const [timer, setTimer] = useState(null); // Current time
+  const [country, setCountry] = useState(null); // Selected country
+  const [change, setChange] = useState(false); // Controls interval
+  const timeInter = useRef(); // Holds interval reference
+
+  // Fetch time zone and initialize time
+  const loadZoneName = useCallback(async (country) => {
+    if (!country) return;
+    const resData = await fetchZone(country);
+    if (resData) {
+      const zone =
+        resData.zones.find((zn) => zn.zoneName.includes(country.capital))
+          ?.zoneName || resData.zones[0]?.zoneName;
+
+      city = zone?.split("/")[1]?.replace(/[_-]/g, " ") || "Unknown";
+
+      const time = await loadTime(zone);
       return time;
     }
-  }
-  const run = useCallback(function run(timer) {
-    if (timer != null) timer.setSeconds(timer.getSeconds() + 1);
-    const thisTime = new Date(
-      `${timer.getFullYear()}-${
-        timer.getMonth() + 1
-      }-${timer.getDate()} ${timer.getHours()}:${timer.getMinutes()}:${timer.getSeconds()}`
-    );
-    setTimer(thisTime);
   }, []);
 
-  function setCode(cca2, capital) {
-    const thisCoutry = { cca2, capital };
-    setCountry(thisCoutry);
-    setChange(false);
-    clearInterval(timeInter.current);
+  // Fetch time for a given zone
+  async function loadTime(zone) {
+    const resData = await loadTimeZone(zone);
+    return resData ? new Date(resData.formatted) : null;
   }
 
-  function stop() {
+  // Start the timer with throttled updates
+  const throttledRun = useCallback(
+    throttle((initialTime) => {
+      setTimer((prevTime) => {
+        const updatedTime = new Date(prevTime.getTime() + 1000);
+        return updatedTime;
+      });
+    }, 1000), // Ensure updates happen every second
+    []
+  );
+
+  const startTimer = useCallback((initialTime) => {
+    if (timeInter.current) clearInterval(timeInter.current);
+    setTimer(initialTime);
+    timeInter.current = setInterval(() => {
+      throttledRun();
+    }, 1000);
+  }, []);
+
+  // Set country and initialize timer
+  const setCode = async (cca2, capital) => {
+    const newCountry = { cca2, capital };
+    setCountry(newCountry);
+    setChange(false); // Stop interval
+    clearInterval(timeInter.current);
+    const initialTime = await loadZoneName(newCountry);
+    if (initialTime) {
+      setChange(true); // Restart interval
+      startTimer(initialTime);
+    }
+  };
+
+  // Stop the timer
+  const stop = () => {
     clearInterval(timeInter.current);
     setTimer(null);
-  }
+  };
 
+  // Manage interval cleanup
   useEffect(() => {
-    async function getTime() {
-      if (!change) {
-        const timeComp = await loadZoneName(country);
-        if (timeComp !== undefined) {
-          setTimer(timeComp);
-          setChange(true);
-        }
-      } else {
-        timeInter.current = setInterval(() => {
-          run(timer);
-        }, 1000);
-        return () => {
-          clearInterval(timeInter.current);
-        };
-      }
-    }
-    getTime();
-  }, [change, country]);
+    return () => {
+      clearInterval(timeInter.current); // Cleanup on unmount
+    };
+  }, []);
 
   const ctxValue = {
-    timer: timer,
+    timer,
     city,
     setCode,
     stop,
   };
+
   return (
     <ClockContext.Provider value={ctxValue}>{children}</ClockContext.Provider>
   );
