@@ -57,10 +57,10 @@ export async function usePrepareLocation() {
   async function showPosition(position) {
     refPosition.current = "ok";
     location = position?.coords;
-    const { latitude: lat, longitude: lon } = position?.coords;
+    // const { latitude: lat, longitude: lon } = position?.coords;
     // Cordintation Test Espain (Vaència city):(
-    // const lat = 39.45104033807325;
-    // const lon = -0.35980224609375006;
+    const lat = 39.45104033807325;
+    const lon = -0.35980224609375006;
     //                                         )
 
     // Cordintation Test Ireland county(Naas):(
@@ -87,8 +87,8 @@ export async function usePrepareLocation() {
     geoResp.current = myObj;
     dispatch(locAction?.setFullLoc({ ...myObj }));
     let preparPlace = null;
-    const n = myObj.country_code;
-    // const n = "ES";
+    // const n = myObj.country_code;
+    const n = "ES";
     if (n === "IE") {
       if (myObj?.district) {
         preparPlace = myObj.district;

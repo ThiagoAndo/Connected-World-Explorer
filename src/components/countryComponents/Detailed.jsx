@@ -66,16 +66,7 @@ function CountryDetailed({ country }) {
     }
   }, []);
 
-  useEffect(() => {
-console.log("COMPONET MONTED")
 
-return ()=>{
-console.log("COMPONET UNMONTED");
-
-}
-
-
-  }, []);
 
   if (thisCountries === null) {
     return (
@@ -127,7 +118,9 @@ console.log("COMPONET UNMONTED");
                 </p>
               </div>
               <div className="inf">
-                <h1 style={{ color: "transparent" }}>asdfsadf </h1>
+                <h1 style={{ color: "transparent" }}>
+                  this element was introuced for style purpuse
+                </h1>
                 <p>
                   <strong>Top Level Domain: </strong>
                   {count.tld}
@@ -164,6 +157,7 @@ console.log("COMPONET UNMONTED");
                 cca2={count.cca2}
                 name={count.name.common}
                 capital={hasPosition ? locDetail?.city : null}
+                coor={latlng}
               />
             </div>
           </div>

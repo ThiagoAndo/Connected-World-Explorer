@@ -1,12 +1,14 @@
 import { useContext, useEffect } from "react";
 import { ClockContext } from "../../../src/store/context/clock";
 let hasChanged;
-function Clock({ cca2, name, capital }) {
+function Clock({ cca2, name, capital, coor }) {
+const clockCoor = {lat: coor[0], lng:coor[1]}
+
   const context = useContext(ClockContext);
   useEffect(() => {
     hasChanged = false;
     setTimeout(() => {
-      context.setCode(cca2, capital);
+      context.setCode(cca2, capital, clockCoor);
       hasChanged = true;
     }, 1500); // Timer Add to comply with API rate limit
   }, [cca2, capital]);
@@ -52,8 +54,8 @@ function Clock({ cca2, name, capital }) {
       <span className="nine">9</span>
       <span className="ten">10</span>
       <span className="eleven">11</span>
-      <h3>{capital ? capital : context.city}</h3>
-      <h5>{name}</h5>
+      <h3>{context.regionName}</h3>
+      <h5>{context.countryName}</h5>
     </div>
   );
 }

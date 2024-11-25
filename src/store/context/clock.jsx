@@ -1,15 +1,16 @@
 import { createContext, useState, useEffect, useRef, useCallback } from "react";
-import { fetchZone, loadTimeZone } from "../../helpers/HTTP";
+import { loadTimeZone } from "../../helpers/HTTP";
 import { throttle } from "lodash";
 
 export const ClockContext = createContext({
   timer: null,
-  city: null,
+  regionName: null,
+  countryName: null,
   setCode: () => {},
   stop: () => {},
 });
-
-let city = null;
+let regionName = null;
+let countryName = null;
 
 export default function ClockProvider({ children }) {
   const [timer, setTimer] = useState(null); // Current time
@@ -17,24 +18,11 @@ export default function ClockProvider({ children }) {
   // Fetches the time zone and initializes time
   const loadZoneName = useCallback(async (country) => {
     if (!country) return;
-    const resData = await fetchZone(country);
-    if (resData) {
-      const zone =
-        resData.zones.find((zn) => zn.zoneName.includes(country.capital))
-          ?.zoneName || resData.zones[0]?.zoneName;
-
-      city = zone?.split("/")[1]?.replace(/[_-]/g, " ") || "Unknown";
-
-      const time = await loadTime(zone);
-      return time;
-    }
+    const resData = await loadTimeZone({ ...country.coor });
+    ({ regionName, countryName } = resData);
+    const { formatted } = resData;
+    if (formatted) return new Date(formatted);
   }, []);
-
-  // Fetches time for a given zone
-  async function loadTime(zone) {
-    const resData = await loadTimeZone(zone);
-    return resData ? new Date(resData.formatted) : null;
-  }
 
   // Start the timer with throttled updates
   const throttledRun = useCallback(
@@ -59,8 +47,8 @@ export default function ClockProvider({ children }) {
   );
 
   // Set country and initialize timer
-  const setCode = async (cca2, capital) => {
-    const country = { cca2, capital };
+  const setCode = async (cca2, capital, coor) => {
+    const country = { cca2, capital, coor };
     clearInterval(timeInter.current); // Stop previous interval if running
     const initialTime = await loadZoneName(country);
     if (initialTime) {
@@ -82,8 +70,9 @@ export default function ClockProvider({ children }) {
   }, []);
 
   const ctxValue = {
+    regionName,
+    countryName,
     timer,
-    city,
     setCode,
     stop,
   };
