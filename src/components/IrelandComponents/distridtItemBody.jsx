@@ -27,12 +27,12 @@ function PanelText({ attributes, id }) {
       <div className="infoBox">
         <div>
           <p>
-            <strong>{id === "Des" ? "Contae: " : "Single Male: "}</strong>
-            {id === "Des" ? CONTAE : T1_2SGLM.toLocaleString("en-US")}
-          </p>
-          <p>
             <strong>{id === "Des" ? "County: " : "Total Male: "}</strong>
             {id === "Des" ? COUNTY : T1_1AGETF.toLocaleString("en-US")}
+          </p>
+          <p>
+            <strong>{id === "Des" ? "Contae: " : "Single Male: "}</strong>
+            {id === "Des" ? CONTAE : T1_2SGLM.toLocaleString("en-US")}
           </p>
         </div>
         <div>

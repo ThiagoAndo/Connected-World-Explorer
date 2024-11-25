@@ -65,6 +65,18 @@ function CountryDetailed({ country }) {
       parse();
     }
   }, []);
+
+  useEffect(() => {
+console.log("COMPONET MONTED")
+
+return ()=>{
+console.log("COMPONET UNMONTED");
+
+}
+
+
+  }, []);
+
   if (thisCountries === null) {
     return (
       <div id="loading">
@@ -142,7 +154,6 @@ function CountryDetailed({ country }) {
                 </div>
               ) : null}
               <ThisForeApp
-                key={cca2}
                 cca2={cca2}
                 capital={capital}
                 hasPosition={hasPosition}

@@ -12,7 +12,7 @@ import {
   getWeekForecastWeather,
 } from "../../utilities/DataUtils";
 import { ALL_DESCRIPTIONS } from "../../utilities/DateConstants";
-import {  fetchWeatherData } from "../../helpers/HTTP";
+import { fetchWeatherData } from "../../helpers/HTTP";
 import WeeklyForecast from "./WeeklyForecast/WeeklyForecast";
 import { ModeAction } from "../../store/context/mode";
 function ForecastApp({ cap, call }) {
@@ -25,6 +25,7 @@ function ForecastApp({ cap, call }) {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
   const [notFound, setNotFound] = useState(false);
+
   function handleTabClick() {
     navigate("weather", { state: cap });
   }
@@ -36,6 +37,7 @@ function ForecastApp({ cap, call }) {
       setIsLoading(false);
       setNotFound(true);
     }
+    console.log(citiesList?.data[0].name);
     if (citiesList?.data?.length > 0) {
       const dataRet = {
         options: citiesList?.data.map((city) => {
@@ -77,9 +79,12 @@ function ForecastApp({ cap, call }) {
       setIsLoading(false);
     }
   };
+
+  const { data } = cap;
   useEffect(() => {
-    if (todayWeather === null) searchChangeHandler(cap);
-  }, [cap]);
+    searchChangeHandler(cap);
+  }, [data[0].name]);
+
   if (todayWeather && todayForecast && call?.country) {
     appContent = (
       <>

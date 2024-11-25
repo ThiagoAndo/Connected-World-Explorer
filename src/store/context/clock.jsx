@@ -14,7 +14,6 @@ let city = null;
 export default function ClockProvider({ children }) {
   const [timer, setTimer] = useState(null); // Current time
   const timeInter = useRef(); // Holds interval reference
-
   // Fetches the time zone and initializes time
   const loadZoneName = useCallback(async (country) => {
     if (!country) return;
