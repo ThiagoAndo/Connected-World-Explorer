@@ -80,10 +80,10 @@ function ForecastApp({ cap, call }) {
     }
   };
 
-  const { data } = cap;
   useEffect(() => {
-    searchChangeHandler(cap);
-  }, [data[0].name]);
+    //  if (todayWeather === null) 
+      searchChangeHandler(cap);
+  }, [cap]);
 
   if (todayWeather && todayForecast && call?.country) {
     appContent = (

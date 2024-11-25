@@ -21,7 +21,7 @@ const CityDateDetail = (props) => {
         sx={{
           fontFamily: "Poppins",
           fontWeight: "600",
-          fontSize: { xs: "12px", sm: "15px", md: "17px" },
+          fontSize: { xs: "12px", sm: "15px", md: "13px" },
 
           color: context.mode ? "black" : "white",
           textTransform: "uppercase",
