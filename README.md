@@ -96,7 +96,7 @@ feel free to reach out to me on X (formerly Twitter) at @Thiago09455827.
 <br />
 
 <p align="center" style="solid 1px red">
-    <img  src="assets/screenshots/home.png" alt="Mobile Version Picture">
+    <img  src="assets/screenshots/connected.gif" alt="Mobile Version Picture">
      <figcaption>Fig.1 - Home page</figcaption>
 </p>
 <br />
