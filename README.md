@@ -4,7 +4,7 @@
 This web application was originally built using vanilla JavaScript
  <a href="https://github.com/ThiagoAndo/rest-countries-api-with-color-theme-switcher-master.git">REST
  Countries API</a>. However, as with everything in life, growth and evolution are inevitable.
-  To reflect my personal development, I decided tansform it into a React-based web application built 
+  To reflect my personal development, I decided to transform it into a React-based web application built 
   to integrate data from multiple APIs, including REST Countries, TimeZoneDB, Geoapify, OpenWeather, 
   and GeoHive(Irish census data provider), providing users with comprehensive information about countries 
   and user location.  Key features include dynamic country information, weather updates, timezone 
@@ -20,7 +20,7 @@ feel free to reach out to me on X (formerly Twitter) at @Thiago09455827.
 ## Table of contents
 
 - [Overview](#overview)
-  - [User is be able to](#user-is-be-able-to)
+  - [User is able to](#user-is-be-able-to)
   - [Built using](#built-using)
   - [APIs](#apis)
   - [Flowchart](#flowchart)
@@ -29,24 +29,24 @@ feel free to reach out to me on X (formerly Twitter) at @Thiago09455827.
 - [Local development](#local-development)
   - [Instructions](#instructions)
   - [Test](#🧪-test)
-- [Author and alive web site links](#author)
+- [Author and alive website links](#author)
 
 ## Overview
 
-### User is be able to:
+### User is able to:
 
 - See all countries from the REST Countries API on the homepage
 - Search for a country using an `input` field
 - Filter countries by region
 - Click on a country to see more detailed information on a separate page
 - Click through to the border countries on the detail page
-- Click on country weather button to see the detailed forecast
-- Toggle the color scheme between light and dark mode _(optional)_
-- Click on given nav link and access information of their location
-- See all counties in Ireland on Ireland page
+- Click on the country weather button to see the detailed forecast
+- Toggle the colour scheme between light and dark mode _(optional)_
+- Click on the given nav link and access information about their location
+- See all counties in Ireland on the Ireland page
 - Search for an Irish county using an `input` field
-- Filter Irish couties by region
-- Click on links provided on the Irish cards to see information and weather detail about it
+- Filter Irish counties by region
+- Click on links provided on the Irish cards to see information and weather details about it
 
 ### Built using
 
