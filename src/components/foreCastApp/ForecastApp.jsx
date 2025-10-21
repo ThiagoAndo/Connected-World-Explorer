@@ -37,7 +37,6 @@ function ForecastApp({ cap, call }) {
       setIsLoading(false);
       setNotFound(true);
     }
-    console.log(citiesList?.data[0].name);
     if (citiesList?.data?.length > 0) {
       const dataRet = {
         options: citiesList?.data.map((city) => {
@@ -81,8 +80,8 @@ function ForecastApp({ cap, call }) {
   };
 
   useEffect(() => {
-    //  if (todayWeather === null) 
-      searchChangeHandler(cap);
+    //  if (todayWeather === null)
+    searchChangeHandler(cap);
   }, [cap]);
 
   if (todayWeather && todayForecast && call?.country) {

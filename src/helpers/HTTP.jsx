@@ -7,7 +7,9 @@ const GEOPIFY = import.meta.env.VITE_GEOPIFY;
 export async function fetchCountries() {
   let response = null;
   try {
-    response = await axios.get("https://restcountries.com/v3.1/all");
+    response = await axios.get(
+      "https://restcountries.com/v3.1/all?fields=name,flags,population,region,capital,currencies,languages,cca2,cioc,borders"
+    );
   } catch (error) {
     console.log("fetchCountries error: " + error);
   }
@@ -22,7 +24,9 @@ export async function fetchRegion(region) {
   let response;
   if (region != "all regions")
     url = `https://restcountries.com/v3.1/region/${region}`;
-  else url = "https://restcountries.com/v3.1/all";
+  else
+    url =
+      "https://restcountries.com/v3.1/all?fields=name,flags,population,region,capital,currencies,languages,cca2,cioc,borders";
 
   try {
     response = await axios.get(url);
@@ -52,14 +56,12 @@ export async function fetchByCode(code) {
 }
 
 export async function loadTimeZone({ lat, lng }) {
-  console.log("country");
-  console.log(lat + " " + lng);
   // // API SOURCE:
   // // https://timezonedb.com/
   let response;
   try {
     response = await fetch(
-      `http://api.timezonedb.com/v2.1/get-time-zone?key=${TIME_KEY}&format=json&by=position&lat=${lat}&lng=${lng}`
+      `https://api.timezonedb.com/v2.1/get-time-zone?key=${TIME_KEY}&format=json&by=position&lat=${lat}&lng=${lng}`
     );
   } catch (error) {
     console.log("loadTime error: " + error);
@@ -141,7 +143,6 @@ export async function fetchLocationAnyWay() {
     return undefined;
   }
 }
-
 
 /*
 export async function fetchSelected(lat, lon) {

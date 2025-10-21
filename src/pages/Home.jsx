@@ -48,7 +48,6 @@ function HomePage() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
   return (
     <Suspense
       fallback={
@@ -73,6 +72,7 @@ function HomePage() {
         )}
       </Await>
     </Suspense>
+  
   );
 }
 

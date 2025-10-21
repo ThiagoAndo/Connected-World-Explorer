@@ -6,7 +6,7 @@ import Borders from "./Borders";
 import ForecastApp from "../foreCastApp/ForecastApp";
 import { Triangle } from "react-loader-spinner";
 import { ModeAction } from "../../store/context/mode";
-import { prepareData, findBorders } from "../../helpers/prepareData";
+import { prepareData } from "../../helpers/prepareData";
 import { useSelector } from "react-redux";
 import Leaflet from "../ui/Leaflet";
 
@@ -22,15 +22,12 @@ function CountryDetailed({ country }) {
   let {
     country: [count],
   } = country;
-  let [lag, crr, capital, subReg, cca2, latlng] = prepareData(country);
+  let [lag, crr, capital, subReg, cca2, latlng, borders] = prepareData(country);
 
   if (hasPosition && url === "/" + code) {
     latlng = [locDetail.lat, locDetail.lon];
   }
-  let bordersArray = [];
-  if (count.borders && thisCountries) {
-    bordersArray = findBorders(count, thisCountries);
-  }
+
   let controlers = (
     <Link to={"/"} className={context.mode ? "btnExp light" : "btnExp dark"}>
       <span>⬅ </span>
@@ -65,8 +62,6 @@ function CountryDetailed({ country }) {
       parse();
     }
   }, []);
-
-
 
   if (thisCountries === null) {
     return (
@@ -134,18 +129,9 @@ function CountryDetailed({ country }) {
                   {lag}
                 </p>
               </div>
-              {bordersArray?.length > 0 ? (
-                <div id="border">
-                  <span id="noBtn">
-                    <strong>Border countries: </strong>
-                  </span>
-                  <div id="btnBor">
-                    {bordersArray.map((brds) => (
-                      <Borders key={brds.id} id={brds.id} name={brds.name} />
-                    ))}
-                  </div>
-                </div>
-              ) : null}
+
+              {borders.length > 0 && <Borders borders={borders} />}
+
               <ThisForeApp
                 cca2={cca2}
                 capital={capital}

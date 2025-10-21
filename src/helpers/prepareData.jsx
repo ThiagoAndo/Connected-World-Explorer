@@ -1,3 +1,5 @@
+import { fetchByCode } from "./HTTP";
+
 export function prepareData(country) {
   let {
     country: [count],
@@ -8,6 +10,8 @@ export function prepareData(country) {
   let langKey;
   let subReg = "No";
   let capital = "No";
+  let borders = [];
+
   const {
     capitalInfo: { latlng },
   } = count;
@@ -25,33 +29,30 @@ export function prepareData(country) {
   if (count?.capital) {
     capital = count.capital[0];
   }
-  return [lag, crr, capital, subReg, count.cca2, latlng];
+  borders = count.borders;
+  return [lag, crr, capital, subReg, count.cca2, latlng, borders];
 }
 
-export function findBorders(count, thisCountries) {
+export async function findBorders(borders) {
+  let i = 0;
   let bordersArray = [];
-  let findCountryName = (cca3, data) => {
-    let count = -1;
-    do {
-      count++;
-    } while (data[count].cca3 !== cca3);
-    return data[count].name.common;
-  };
-  for (let index = 0; index < count?.borders?.length; index++) {
-    let name = findCountryName(count.borders[index], thisCountries);
-    let longName = "";
-    if (name?.length > 10) {
+  let longName = "";
+  for (i; i <= borders.length - 1; i++) {
+    let name = await fetchByCode(borders[i]);
+    if (name[0]?.name?.common?.length > 10) {
       for (let index = 0; index <= 10; index++) {
         if (index <= 7) {
-          longName += name[index];
+          longName += name[0]?.name?.common[index];
         } else if (index === 8) {
           longName += " ...";
         }
       }
-      bordersArray.push({ id: count.borders[index], name: longName });
+      bordersArray.push(longName);
     } else {
-      bordersArray.push({ id: count.borders[index], name });
+      bordersArray.push(name[0]?.name?.common);
     }
   }
-  return bordersArray;
+
+  console.log("bordersArray: " + bordersArray);
+  if (bordersArray.length > 0) return bordersArray;
 }
